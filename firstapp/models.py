@@ -1,3 +1,4 @@
 from django.db import models
-
-# Create your models here.
+# create table column<DDL +DML>
+class Curriculum(models.Model):
+    name = models.CharField(max_length=255)
