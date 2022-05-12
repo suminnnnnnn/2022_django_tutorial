@@ -14,9 +14,15 @@ def insert(request):
 
     return HttpResponse('완료')
 
+# def show(request):
+    # course = Course.objects.all()
+    # result = ''
+    # for c in course:
+    #     result += c.name + '<br>'
+    # return HttpResponse(result)
 def show(request):
     course = Course.objects.all()
-    result = ''
-    for c in course:
-        result += c.name + '<br>'
-    return HttpResponse(result)
+    return render(
+    request, 'secondapp/show.html', 
+    {'data' : course}
+    )
