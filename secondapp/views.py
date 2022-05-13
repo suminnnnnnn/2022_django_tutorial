@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Course
+from .models import ArmyShop, Course
 
 from secondapp.models import Course
 # Create your views here.
@@ -25,4 +25,10 @@ def show(request):
     return render(
     request, 'secondapp/show.html', 
     {'data' : course}
+    )
+def army_shop(request):
+    shops = ArmyShop.objects.all()
+    return render(
+        request, 'secondapp/army_shop.html',
+        {'data':shops}
     )
