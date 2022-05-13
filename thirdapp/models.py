@@ -73,7 +73,7 @@ class Emp(models.Model):
     hiredate = models.DateTimeField()
     sal = models.IntegerField()
     comm = models.IntegerField()
-    depno = models.ForeignKey(Dept)
+    depno = models.ForeignKey(Dept, on_delete=models.CASCADE)
 
     class Meta:
          db_table = 'emp'

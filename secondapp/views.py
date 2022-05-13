@@ -26,8 +26,22 @@ def show(request):
     request, 'secondapp/show.html', 
     {'data' : course}
     )
+
+def army_shop2(request, year, month):
+    shops = ArmyShop.objects.filter(
+        year=year, month=month)
+    return render(
+        request, 'secondapp/army_shop.html',
+        {'data':shops}
+    )
+
 def army_shop(request):
-    shops = ArmyShop.objects.all()
+    # shops = ArmyShop.objects.all()
+    prd = request.GET.get('prd')
+    if not prd:
+        prd = ''
+    shops = ArmyShop.objects.filter(name__contains=prd)
+
     return render(
         request, 'secondapp/army_shop.html',
         {'data':shops}
