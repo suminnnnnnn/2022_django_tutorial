@@ -46,3 +46,9 @@ def army_shop(request):
         request, 'secondapp/army_shop.html',
         {'data':shops}
     )
+
+def course(request):
+    return render(
+        request,
+        'secondapp/course.html', {}
+    )

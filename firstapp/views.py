@@ -3,6 +3,21 @@ from django.http import HttpResponse
 
 from .models import Curriculum
 
+def req_get(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    c = request.GET['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+def req_post(request):
+    if request.method == 'POST':
+        a = request.POST.get('a')
+        b = request.POST.get('b')
+        c = request.POST['c']
+        result = '%s %s %s' % (a, b, c)
+        return HttpResponse(result)
+    return render(request, 'firstapp/post.html')
+
 def show(request):
     curriculum = Curriculum.objects.all()
     # result = ''
@@ -34,3 +49,12 @@ def main(request):
     return HttpResponse('<u>Main</u>')
 def main(request):
     return HttpResponse('Home')
+
+def req_get(request):
+    a = request.GET.get('a')
+    b = request.GET.get('b')
+    c = request.GET['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+def req_ajax4(request):
+    return render(request, 'firstapp/ajax4.html')
