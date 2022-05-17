@@ -12,7 +12,8 @@
         'csrfmiddlewaretoken', csrfmiddlewaretoken.value);
 
     const data = axios({
-        url: '/first/req/post/',
+       // url: '/first/req/post/',
+        url: '{%/first/req/post/%}',
         method: 'post',
         data: formData
         }

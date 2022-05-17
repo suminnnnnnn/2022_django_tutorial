@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Shop, JejuOlle
+from .models import Hospital, Shop, JejuOlle
 from .models import Owner, Shop, JejuOlle
 
 def shop(request):
@@ -39,3 +39,11 @@ def jeju_olle_ajax(request):
     return render(
         request, 'thirdapp/jeju_olle_ajax.html', {}
     )
+
+def hospital(request):
+     hospitals = Hospital.objects.all()
+     return render(
+                request, 
+                'thirdapp/hospital.html',
+                {'hospitals': hospitals}
+                )

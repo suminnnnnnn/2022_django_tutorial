@@ -23,9 +23,9 @@ def insert(request):
 def show(request):
     course = Course.objects.all()
     return render(
-    request, 'secondapp/show.html', 
-    {'data' : course}
-    )
+        request, 'secondapp/show.html', 
+        {'data' : course}
+        )
 
 def army_shop2(request, year, month):
     shops = ArmyShop.objects.filter(
