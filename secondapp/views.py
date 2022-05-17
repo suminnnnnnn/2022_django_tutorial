@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import ArmyShop, Course
+from .forms import CourseForm
 
 from secondapp.models import Course
 # Create your views here.
@@ -52,3 +53,18 @@ def course(request):
         request,
         'secondapp/course.html', {}
     )
+
+def course_save(request):
+  if request.method == 'POST':
+    form = CourseForm(request.POST)
+    if form.is_valid():
+      c = form.save(commit=False)
+      c.save()
+      return redirect('/second/course/save/')
+  else:
+    form = CourseForm()
+
+  return render(
+    request, 'secondapp/course_save.html',
+    { 'form': form }
+  )

@@ -7,6 +7,7 @@ urlpatterns = [
     path('show/', views.show, name='show'),
     path('army_shop/', views.army_shop, name='army_shop'),
     path('course/', views.course),
+    path('course/save/', views.course_save),
     path(
         'army_shop/<int:year>/<int:month>/',
          views.army_shop2),

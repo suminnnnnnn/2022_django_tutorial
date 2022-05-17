@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
+from .forms import CurriculumForm
 
 from .models import Curriculum
 
@@ -98,3 +100,19 @@ def template(request):
     return render(
         request, 'firstapp/template.html', {}
         )
+
+
+def form_model(request):
+    if request.method == 'POST':
+        form = CurriculumForm(request.POST)
+        if form.is_valid():
+            #commit False 사용 시 Curriculum 모델 클래스로 반환
+            c = form.save(commit=False)
+            c.save
+            return redirect('/first/form/model/')
+    else:
+        form = CurriculumForm()
+    return render(
+    request, 'firstapp/form_model.html',
+    { 'form': form }
+)
