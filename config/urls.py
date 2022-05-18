@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from firstapp import views
 from . import views as config_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index1/', views.index1),
@@ -28,5 +31,7 @@ urlpatterns = [
     path('third/', include('thirdapp.urls')),
 
     path('member/', include('member.urls')),
-
-]
+    path('file/', include('file.urls')),
+]+ static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT)

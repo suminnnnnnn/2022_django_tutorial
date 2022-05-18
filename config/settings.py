@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*'] #모든 도메인에서 실행 가능 상태
 # Application definition
 
 INSTALLED_APPS = [
+    'file',
     'member',
     'firstapp',
     'secondapp',
@@ -140,3 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/member/login/'
 LOGOUT_REDIRECT_URL = '/member/login/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
