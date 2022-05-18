@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from thirdapp.forms import OwnerForm
 from .models import Hospital, Shop, JejuOlle
 from .models import Owner, Shop, JejuOlle
 
@@ -47,3 +49,18 @@ def hospital(request):
                 'thirdapp/hospital.html',
                 {'hospitals': hospitals}
                 )
+
+def owner_save(request):
+  if request.method == 'POST':
+    form = OwnerForm(request.POST)
+    if form.is_valid():
+      c = form.save(commit=False)
+      c.save()
+      return redirect('/third/owner/save/')
+  else:
+    form = OwnerForm()
+
+  return render(
+    request, 'thirdapp/owner_save.html',
+    { 'form': form }
+  )
