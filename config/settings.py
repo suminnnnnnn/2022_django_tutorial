@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*'] #모든 도메인에서 실행 가능 상태
 # Application definition
 
 INSTALLED_APPS = [
+    'member',
     'firstapp',
     'secondapp',
     'thirdapp',
@@ -136,3 +137,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/member/login/'
+LOGOUT_REDIRECT_URL = '/member/login/'
