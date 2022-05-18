@@ -28,6 +28,7 @@ class Owner(models.Model):
     name = models.CharField(max_length=50, null=True)
     class Meta:
         db_table = 'owner'
+        managed = False
 
 class Animal(models.Model):
     name = models.CharField(max_length=50, null=True)
@@ -35,12 +36,14 @@ class Animal(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.SET_NULL, null=True)
     class Meta:
         db_table = 'animal'
+        managed = False
 
 class Warranty(models.Model):
     model_nm = models.CharField(max_length=50, null=True)
     period = models.IntegerField(null=True)
     class Meta:
         db_table = 'warranty'
+        managed = False
 class Product(models.Model):
     name = models.CharField(max_length=50, null=True)
     price = models.IntegerField(null=True)
@@ -48,6 +51,7 @@ class Product(models.Model):
     warranty = models.OneToOneField(Warranty, on_delete=models.SET_NULL, null=True)
     class Meta:
         db_table = 'product'
+        managed = False
 
 class Playground(models.Model):
     name = models.CharField(max_length=50, null=True)
@@ -56,6 +60,7 @@ class Playground(models.Model):
     animals = models.ManyToManyField(Animal, null=True)
     class Meta:
          db_table = 'playground'
+         managed = False
 
 class Dept(models.Model):
     depno = models.IntegerField(primary_key=True)
@@ -64,6 +69,7 @@ class Dept(models.Model):
     
     class Meta:
          db_table = 'dept'
+         managed = False
 
 class Emp(models.Model):
     empno = models.IntegerField(primary_key=True)
@@ -77,6 +83,7 @@ class Emp(models.Model):
 
     class Meta:
          db_table = 'emp'
+         managed = False
 
 class Hospital(models.Model):
     sido = models.CharField(max_length=50)
